@@ -1,0 +1,673 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace CAR_RENTAL_SYSTEM
+{
+    class welcome
+    {
+
+        int fare;
+        int gear_fear;
+        string days;
+        string name;
+        int total;
+        string phone;
+        string cnic;
+        string address;
+        int parse_int_day;
+        public welcome()
+        {
+            personalInformation();
+        }
+        public void personalInformation()
+        {
+
+            Console.WriteLine("________________________________________");
+            Console.WriteLine("\n\t\t"); //logo
+            Console.WriteLine("\t      $$$$$$   $$$$$$$  $$$$$$       $$$$$$ $$$$$$$ $$$$    $$  $$$$$$$$  $$$$$$$  $$               ");
+            Console.WriteLine("\t      $$       $$   $$  $    $       $    $ $$      $$ $$   $$     $$     $$   $$  $$      ");
+            Console.WriteLine("\t      $$       $$$$$$$  $$$$$$       $$$$$$ $$$$$   $$  $$  $$     $$     $$$$$$$  $$          ");
+            Console.WriteLine("\t      $$       $$   $$  $ $          $ $    $$      $$   $$ $$     $$     $$   $$  $$         ");
+            Console.WriteLine("\t      $$$$$$   $$   $$  $   $        $   $  $$$$$$$ $$    $$$$     $$     $$   $$  $$$$$$$            ");
+            Console.WriteLine("\n");
+            Console.WriteLine("\t      $$    $$  $$$$$$$  $$$$    $$  $$$$$$$   $$$$$$  $$$$$$$  $$    $$  $$$$$$$  $$$$    $$  $$$$$$$$  ");
+            Console.WriteLine("\t      $$$  $$$  $$   $$  $$ $$   $$  $$   $$  $$       $$       $$$  $$$  $$       $$ $$   $$     $$     ");
+            Console.WriteLine("\t      $$ $$ $$  $$$$$$$  $$  $$  $$  $$$$$$$  $$ $$$$  $$$$$    $$ $$ $$  $$$$$    $$  $$  $$     $$     ");
+            Console.WriteLine("\t      $$    $$  $$   $$  $$   $$ $$  $$   $$  $$   $$  $$       $$    $$  $$       $$   $$ $$     $$     ");
+            Console.WriteLine("\t      $$    $$  $$   $$  $$    $$$$  $$   $$    $$$$   $$$$$$$  $$    $$  $$$$$$$  $$    $$$$     $$     ");
+            Console.WriteLine("\n\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPLEASE PRESS Enter BUTTON....");
+            Console.ReadLine();
+            Console.Clear();
+
+            /*Console.WriteLine("________________________________________");
+            Console.WriteLine("\n\t\t");
+            Console.WriteLine("\t   $$$$$$ $$$$$$ $$$$$$ $$$$$$$ $$$$$$ $$$$    $$ $$$$$$$ $$  ");
+            Console.WriteLine("\t   $   $$ $$     $$  $$ $$      $$  $$ $$ $$   $$ $$   $$ $$  ");
+            Console.WriteLine("\t   $$$$$$ $$$$$$ $$$$$$ $$$$$$$ $$  $$ $$  $$  $$ $$$$$$$ $$  ");
+            Console.WriteLine("\t   $      $$     $ $         $$ $$  $$ $$   $$ $$ $$   $$ $$  ");
+            Console.WriteLine("\t   $      $$$$$$ $   $  $$$$$$$ $$$$$$ $$    $$$$ $$   $$ $$$$$$");
+            Console.WriteLine("\t $$$$$$$ $$$$    $$ $$$$$$  $$$$$$ $$$$$$ $$    $$ $$$$$$$  $$$$$$$ $$$$$$$$ $$$$$$$ $$$$    $$");
+            Console.WriteLine("\t    $    $$ $$   $$ $$      $$  $$ $$  $$ $$$  $$$ $$   $$     $$      $$    $$   $$ $$ $$   $$");
+            Console.WriteLine("\t    $    $$  $$  $$ $$$$$$  $$  $$ $$$$$$ $$ $$ $$ $$$$$$$     $$      $$    $$   $$ $$  $$  $$");
+            Console.WriteLine("\t    $    $$   $$ $$ $$      $$  $$ $ $    $$    $$ $$   $$     $$      $$    $$   $$ $$   $$ $$");
+            Console.WriteLine("\t $$$$$$$ $$    $$$$ $$      $$$$$$ $   $  $$    $$ $$   $$     $$   $$$$$$$$ $$$$$$$ $$    $$$$");
+            Console.WriteLine("\n\n");*/
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t PERSONAL INFORMATION");
+            Console.Write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tNAME : ");
+            name = Convert.ToString(Console.ReadLine());
+            phoneNo();
+            cnicNo();
+            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tHOME ADDRESS : ");
+            address = Convert.ToString(Console.ReadLine());
+            Console.Clear();
+            requirment();
+            //gearTransmission();
+            //  Final_Fare();
+            //submit();
+
+
+        }
+
+
+
+
+        public void phoneNo()
+        {
+            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPHONE NO. : ");
+
+            phone = Console.ReadLine();
+
+            long phn_no_digit;
+            bool isNumeric = long.TryParse(phone, out phn_no_digit);
+
+            if (!isNumeric)
+            {
+                Console.WriteLine("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----Incorrect value!! Plese enter numeric value-----");
+                Console.ReadLine();
+                Console.Clear();
+                phoneNo();
+
+            }
+
+
+            if (phone.Length < 11 || phone.Length > 11)
+            {
+                Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----PLEASE ENTER 11 DIGIT VALUE-----");
+                Console.ReadLine();
+                Console.Clear();
+                phoneNo();
+            }
+
+
+
+        }
+
+
+        public void cnicNo()
+        {
+            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCNIC : ");
+            cnic = Console.ReadLine();
+            long cnic_no_digit;
+            bool isNumeric = long.TryParse(cnic, out cnic_no_digit);
+
+            if (!isNumeric)
+            {
+                Console.WriteLine("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----Incorrect value!! Plese enter numeric value-----");
+                Console.ReadLine();
+                Console.Clear();
+                cnicNo();
+            }
+            if (cnic.Length < 13 || cnic.Length > 13)
+            {
+                Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t------PLEASE ENTER 13 DIGIT VALUE-----");
+                Console.ReadLine();
+                Console.Clear();
+                cnicNo();
+            }
+
+        }
+        public void requirment()
+        {
+            Console.Clear();
+            /*Console.WriteLine("________________________________________________________________________");
+            Console.WriteLine("\n\t\t");
+            Console.WriteLine("$$$$$$ $$   $$ $$$$$$ $$$$$$ $$$$$$$ $$$$$$$     $$$$$$ $$$$$$$`$$$$$$$                                                                        ");
+            Console.WriteLine("$$     $$   $$ $$  $$ $$  $$ $$      $$          $$     $$   $$ $$    $              `               ");
+            Console.WriteLine("$$     $$$$$$$ $$  $$ $$  $$ $$$$$$$ $$$$$$$     $$     $$$$$$$ $$$$$$$                                                          ");
+            Console.WriteLine("$$     $$   $$ $$  $$ $$  $$      $$ $$          $$     $$   $$ $ $$                                          ");
+            Console.WriteLine("$$$$$$ $$   $$ $$$$$$ $$$$$$ $$$$$$$ $$$$$$$     $$$$$$ $$   $$ $$  $$                                                             ");
+            Console.WriteLine("\n\n");*/
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t REQUIRMENT");
+            Console.Write("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tENTER MAKE \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 1 for HONDA \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 2 for TOYOTA \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 3 for NISSAN \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 4 for AUDI \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 5 for DIAHATSU \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 6 for SUZUKI \n ");
+            string make = Convert.ToString(Console.ReadLine());
+            switch (make)
+            {
+
+                case "1":
+                    carcategory1:
+                    //1 for honda
+                    //Console.Write("HONDA");
+                    Console.Write("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tEnter Model \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 1 for CIVIC \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 2 for CITY \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 3 for FIT \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 4 for BR-V \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 5 for CROSSROAD \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 6 for AIRWAVE \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 7 for VEZEL \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 8 for ACCORD \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 9 for CR-V \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 10 for INSIGHT \n ");
+                    string
+                        model = Convert.ToString(Console.ReadLine());
+
+                    switch (model)
+                    {
+                        case "1":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCIVIC");
+                            fare = 8000;
+
+                            break;
+                        case "2":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCITY");
+                            fare = 4000;
+                            break;
+                        case "3":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFIT");
+                            fare = 3000;
+                            break;
+                        case "4":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tBR-V");
+                            fare = 6500;
+                            break;
+                        case "5":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCROSSROAD");
+                            fare = 7000;
+                            break;
+                        case "6":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAIRWAVE");
+                            fare = 3500;
+                            break;
+                        case "7":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tVEZEL");
+                            fare = 7000;
+                            break;
+                        case "8":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tACCORD");
+                            fare = 10000;
+                            break;
+                        case "9":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCR-V");
+                            fare = 8000;
+                            break;
+                        case "10":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tINSIGHT");
+                            fare = 5000;
+                            break;
+                        default:
+                            Console.Write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----PLEASE SELECT CORRECT OPTION-----");
+                            Console.ReadLine();
+                            Console.Clear();
+                            goto carcategory1;
+
+                            //break;
+
+
+                    }
+
+                    break;
+                case "2":
+                    carcategory2:
+                    //1 for TOYOTA
+                    //Console.Write("HONDA");
+                    Console.Write("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tEnter Model \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 1 for COROLLA \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 2 for REVO \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 3 for VIGO \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 4 for VITZ \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 5 for LAND-CRUISER \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 6 for PRADO \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 7 for GRANDE \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 8 for PASSO \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 9 for AQUA \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 10 for HIACE \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 11 for COASTER \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 12 for TUNDRA \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 13 for PROBOX \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 14 for CH-R \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 15 for CAMRI \n ");
+                    string model1 = Convert.ToString(Console.ReadLine());
+
+                    switch (model1)
+                    {
+                        case "1":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCOROLLA");
+                            fare = 4000;
+                            break;
+                        case "2":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tREVO");
+                            fare = 15000;
+                            break;
+                        case "3":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tVIGO");
+                            fare = 10000;
+                            break;
+                        case "4":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tVITZ");
+                            fare = 4000;
+                            break;
+                        case "5":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tLAND-CRUISER");
+                            fare = 20000;
+                            break;
+                        case "6":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPRADO");
+                            fare = 18000;
+                            break;
+                        case "7":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGRANDE");
+                            fare = 5000;
+                            break;
+                        case "8":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPASSO");
+                            fare = 5000;
+                            break;
+                        case "9":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAQUA");
+                            fare = 7000;
+                            break;
+                        case "10":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tHIACE");
+                            fare = 10000;
+                            break;
+                        case "11":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCOASTER");
+                            fare = 15000;
+                            break;
+                        case "12":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFORTUNER");
+                            fare = 18000;
+                            break;
+                        case "13":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPROBOX");
+                            fare = 2500;
+                            break;
+                        case "14":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCH-R");
+                            fare = 6000;
+                            break;
+                        case "15":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCAMRY");
+                            fare = 8000;
+                            break;
+                        default:
+                            Console.Write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----PLEASE SELECT CORRECT OPTION-----");
+                            Console.ReadLine();
+                            Console.Clear();
+                            goto carcategory2;
+
+                            //break;
+                    }
+                    break;
+                case "3":
+                    carcategory3:
+                    //1 for NISSAN
+                    //Console.Write("HONDA");
+                    Console.Write("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tEnter Model \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 1 for DAYZ \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 2 for JUKE \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 3 for 350Z \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 4 for PATROL \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 5 for SKYLINE \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 6 for SANTRA \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 7 for CLIPPER \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 8 for GT-R \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 9 for ROOX \n");
+                    string model2 = Convert.ToString(Console.ReadLine());
+
+                    switch (model2)
+                    {
+                        case "1":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tDAYZ");
+                            fare = 3500;
+                            break;
+                        case "2":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tJUKE");
+                            fare = 7000;
+                            break;
+                        case "3":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t350Z");
+                            fare = 15000;
+                            break;
+                        case "4":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPATROL");
+                            fare = 6000;
+                            break;
+                        case "5":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSKYLINE");
+                            fare = 20000;
+                            break;
+                        case "6":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSANTRA");
+                            fare = 6000;
+                            break;
+                        case "7":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCLIPPER");
+                            fare = 4000;
+                            break;
+                        case "8":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGT-R");
+                            fare = 17000;
+                            break;
+                        case "9":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tROOX");
+                            fare = 4500;
+                            break;
+                        default:
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPLEASE SELECT CORRECT OPTION");
+                            Console.ReadLine();
+                            Console.Clear();
+                            goto carcategory3;
+                            //break;
+                    }
+                    break;
+                case "4":
+                    carcategory4:
+                    //1 for AUDI
+                    //Console.Write("HONDA");
+                    Console.Write("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tEnter Model \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 1 for A3 \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 2 for A4 \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 3 for A5 \n ");
+                    string model3 = Convert.ToString(Console.ReadLine());
+
+                    switch (model3)
+                    {
+                        case "1":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tA3");
+                            fare = 10000;
+                            break;
+                        case "2":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tA4");
+                            fare = 15000;
+                            break;
+                        case "3":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tA5");
+                            fare = 20000;
+                            break;
+                        default:
+                            Console.Write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----PLEASE SELECT CORRECT OPTION-----");
+                            Console.ReadLine();
+                            Console.Clear();
+                            goto carcategory4;
+
+                            //break;
+                    }
+                    break;
+                case "5":
+                    carcategory5:
+                    //1 for DIAHATSU
+                    //Console.Write("HONDA");
+                    Console.Write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tEnter Model \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 1 for MIRA \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 2 for HIJET \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 3 for MOVE \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 4 for CUORE \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 5 for BOON \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 6 for CAST \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 7 for TANTO \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 8 for COPEN \n ");
+                    string model4 = Convert.ToString(Console.ReadLine());
+
+                    switch (model4)
+                    {
+                        case "1":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tMIRA");
+                            fare = 5000;
+                            break;
+                        case "2":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tHIJET");
+                            fare = 4000;
+                            break;
+                        case "3":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tMOVE");
+                            fare = 4500;
+                            break;
+                        case "4":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCUORE");
+                            fare = 3000;
+                            break;
+                        case "5":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tBOON");
+                            fare = 3700;
+                            break;
+                        case "6":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCAST");
+                            fare = 4500;
+                            break;
+                        case "7":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTANTO");
+                            fare = 5000;
+                            break;
+                        case "8":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCOPEN");
+                            fare = 9000;
+                            break;
+                        default:
+                            Console.Write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----PLEASE SELECT CORRECT OPTION-----");
+                            Console.ReadLine();
+                            Console.Clear();
+                            goto carcategory5;
+
+                            //break;
+                    }
+                    break;
+                case "6":
+                    carcategory6:
+                    //1 for SUZUKI
+                    //Console.Write("HONDA");
+                    Console.Write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tEnter Model \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 1 for HUSTLER \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 2 for BOLAN \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 3 for MEHRAN \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 4 for AP-V \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 5 for ALTO \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 6 for CULTUS \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 7 for SWIFT \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 8 for VITARA \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 9 for CIAZ \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 10 for WAGON-R \n ");
+                    string model5 = Convert.ToString(Console.ReadLine());
+
+                    switch (model5)
+                    {
+                        case "1":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tHUSTLER");
+                            fare = 4500;
+                            break;
+                        case "2":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tBOLAN");
+                            fare = 3000;
+                            break;
+                        case "3":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tMEHRAN");
+                            fare = 2500;
+                            break;
+                        case "4":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAPV");
+                            fare = 7000;
+                            break;
+                        case "5":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tALTO");
+                            fare = 5000;
+                            break;
+                        case "6":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCULTUS");
+                            fare = 4500;
+                            break;
+                        case "7":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSWIFT");
+                            fare = 6000;
+                            break;
+                        case "8":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tVITARA");
+                            fare = 8000;
+                            break;
+                        case "9":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCIAZ");
+                            fare = 6000;
+                            break;
+                        case "10":
+                            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWAGON-R");
+                            fare = 4500;
+                            break;
+                        default:
+                            Console.Write("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----PLEASE SELECT CORRECT OPTION-----");
+                            Console.ReadLine();
+                            Console.Clear();
+                            goto carcategory6;
+
+                            // break;
+                    }
+                    break;
+
+                default:
+                    Console.Write("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----PLEASE ENTER CORRECT VALUE-----");
+                    Console.ReadLine();
+                    Console.Clear();
+                    requirment();
+                    break;
+
+
+            }
+            Console.Clear();
+            No_Of_Days();
+
+
+        }
+        public void No_Of_Days()
+        {
+            Console.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tENTER DAYS FOR CAR RENT :");
+            days = Console.ReadLine();
+            int No_of_days;
+            bool isNumeric = int.TryParse(days, out No_of_days);
+
+            if (!isNumeric)
+            {
+                Console.WriteLine("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----Incorrect value!! Plese enter numeric value-----");
+                Console.ReadLine();
+                Console.Clear();
+                No_Of_Days();
+
+            }
+            else
+
+            {
+                parse_int_day = Convert.ToInt32(days);
+            }
+
+            Console.Clear();
+            gearTransmission();
+
+        }
+        public void gearTransmission()
+        {
+            Console.WriteLine("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAUTOMATIC / MANUAL \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 1 for AUTOMATIC \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press 2 for Manual \n");
+            string gear = Convert.ToString(Console.ReadLine());
+            switch (gear)
+            {
+                case "1":
+                    //1 for automatic
+                    gear_fear = 2000;
+                    //Console.Write("\nAUTOMATIC");
+                    break;
+                case "2":
+                    //2 for manual
+                    gear_fear = 1000;
+                    // Console.Write("\nMANUAL");
+                    break;
+                default:
+                    Console.Write("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----PLEASE ENTER CORRECT VALUE-----");
+                    Console.ReadLine();
+                    Console.Clear();
+                    gearTransmission();
+
+                    break;
+            }
+            Console.ReadLine();
+            Console.Clear();
+            Final_Fare();
+
+
+
+        }
+        public void Final_Fare()
+        {
+
+            total = (fare * parse_int_day) + gear_fear;
+            Console.Write("\n\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t*YOUR FINAL FARE IS : " + total + " *");
+            Console.ReadLine();
+            submit();
+
+        }
+        public void submit()
+        {
+            submit_category:
+            Console.Write("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t** DO YOU WANT A RECIEPT * \n*\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press Y for YES \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press N for NO **\n : ");
+            string submit = Convert.ToString(Console.ReadLine());
+            if (submit == "y" || submit == "Y")
+            {
+
+                reciept();
+
+            }
+
+            if (submit == "N" || submit == "n")
+            {
+                form_category:
+                Console.Write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t--------DO YOU WANT TO FILL THIS FORM AGAIN ?---------\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press Y for YES \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Press N for NO ");
+                string againForm = Convert.ToString(Console.ReadLine());
+                if (againForm == "Y" || againForm == "y")
+                {
+                    Console.Clear();
+                    personalInformation();
+                }
+
+                if (againForm == "N" || againForm == "n")
+                {
+                    Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----THANKS FOR VISITING-----");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----PLEASE ENTER CORRECT VALUE-----");
+                    goto form_category;
+                }
+
+
+            }
+
+            else
+            {
+                Console.WriteLine("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-----PLEASE ENTER CORRECT VALUE-----");
+                goto submit_category;
+            }
+
+
+        }
+        public void reciept()
+        {
+            //    FileStream reciept1 = new FileStream("C:\\Users\\user\\Desktop\\HasanProject/" + name, FileMode.Create, FileAccess.Write);
+
+            FileStream receipt = new FileStream("E://First sem//PF SEM 1//CAR RENTAL SYSTEM//RECIEPT// " + name + ".txt", FileMode.Append, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(receipt);
+
+            // To write on the console screen
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-------------------THANK YOU FOR RENTING----------------------------------\n \n \n \n");
+
+
+            // To write a line in buffer
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t| ------------------------------------------------");
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t| NAME : " + name + " |");
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|------------------------------------------------");
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t| PHONE NO. : " + phone + "| ");
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|------------------------------------------------");
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t| CNIC NO. : " + cnic + "| ");
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|------------------------------------------------");
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t| ADDRESS : " + address + "| ");
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|------------------------------------------------");
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t| TOTAL RENT : " + total + "| ");
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|-----------------------------------------------");
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t| CAR RENTED DAYS : " + days + "| ");
+            sw.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|------------------------------------------------");
+            sw.Write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            DateTime now = DateTime.Now;
+            sw.WriteLine(now.ToString("f"));
+
+            sw.WriteLine("\n\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t------------------- HAVE A NICE DAY :) ----------------------------------\n \n \n \n");
+
+            // To write in output stream
+            sw.Flush();
+
+            sw.Close();
+            string text = File.ReadAllText("E://First sem//PF SEM 1//CAR RENTAL SYSTEM//RECIEPT// " + name + ".txt");
+            Console.WriteLine(text);
+            Console.ReadLine();
+
+
+            // string[] lines = File.ReadAllLines();
+
+            // foreach (string line in lines)
+            //    Console.WriteLine(line);
+            Console.Clear();
+
+
+            personalInformation();
+        }
+    }
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            welcome p = new welcome();
+            p.personalInformation();
+
+
+
+        }
+
+
+
+    }
+}
